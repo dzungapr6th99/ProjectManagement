@@ -20,19 +20,32 @@ namespace ProjectManagement.Model
             this.Projects = new HashSet<Project>();
         }
     
-        public string username { get; set; }
-        public string password { get; set; }
-        public string email { get; set; }
+        public string Username { get; set; }
+        public string Name { get; set; }
+        public string Password { get; set; }
+        public string Email { get; set; }
         public int ID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Project> Projects { get; set; }
+        //method
+        public Teacher(String name, int id, String username, String password, String email)
+        {
+            this.Name = name;
+            this.Username = username;
+            this.Password = password;
+            this.Email = email;
+            this.ID = id;
+        }
         public void AddProject(String s, int type)
         {
-
-            Project project = new Project(s, type, this.ID, this.ID*100+Projects.Count+1);
-            project.Teacher = this;
-            this.Projects.Add(project);
+            using (var context = new DatabaseContext())
+            {
+                Project project = new Project(s, type, this.ID, this.ID * 100 + Projects.Count + 1);
+                project.Teacher = this;
+                this.Projects.Add(project);
+                context.SaveChanges();
+            }
         }
         
     }

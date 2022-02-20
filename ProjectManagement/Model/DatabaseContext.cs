@@ -4,16 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
-//Tao quan he nhieu nhieu giua sinh vien va project
+//tao class de truy cap, update database
 namespace ProjectManagement.Model
 {
-    class StudentProjectApplyDBContext:DbContext
+    class DatabaseContext: DbContext
     {
-        public DbSet<Student> Students { get; set; }
-        public DbSet<Project> Projects { get; set; }
+        public DatabaseContext() { }
+        
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
         }
+        public DbSet<Student> Students { get; set; }
+        public DbSet<Teacher> Teachers { get; set; }
+        public DbSet <Project> Projects { get; set; }
     }
 }

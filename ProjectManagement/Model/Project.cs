@@ -33,12 +33,17 @@ namespace ProjectManagement.Model
         }
         public void AcceptStudent(Student student)
         {
-            if (!StudentAccepted.Contains(student))
-                this.StudentAccepted.Add(student);
-            if (StudentApply.Contains(student))
-                this.StudentApply.Remove(student);
-            student.ProjectRegistration = this;
-            student.ProjectsApply.Clear();
+            using (var context=new DatabaseContext())
+            {
+                if (!StudentAccepted.Contains(student))
+                    this.StudentAccepted.Add(student);
+                if (StudentApply.Contains(student))
+                    this.StudentApply.Remove(student);
+                student.ProjectAccept = this;
+                student.ProjectsApply.Clear();
+                context.SaveChanges();//save to databse
+            }    
+            
 
         }
 
