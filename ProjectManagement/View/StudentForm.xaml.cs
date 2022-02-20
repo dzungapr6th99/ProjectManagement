@@ -19,15 +19,14 @@ namespace ProjectManagement.View
     /// </summary>
     public partial class StudentForm : Window
     {
-        public StudentForm()
+        public StudentForm(Student student)
         {
             InitializeComponent();
-
             List<int> ProjectType = new List<int>() { 1, 2, 3 };
             cbProjectType.ItemsSource = ProjectType;
             List<Project> ProjectApply = new List<Project>() { };
             List<Teacher> Teachers = new List<Teacher>() { };
-            Student student = new Student();
+            //Student student=new Student();
             StudentName.Content = student.Name;
             void ShowProject(int type)
             {
@@ -90,8 +89,6 @@ namespace ProjectManagement.View
             {
                 ShowProject(cbProjectType.SelectedIndex + 1);
             }
-
-
         }
     }
 }

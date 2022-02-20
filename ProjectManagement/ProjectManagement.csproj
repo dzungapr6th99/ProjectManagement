@@ -66,6 +66,7 @@
     </ApplicationDefinition>
     <Compile Include="Controller\Account.cs" />
     <Compile Include="Model\DatabaseContext.cs" />
+    <Compile Include="Model\MD5.cs" />
     <Compile Include="View\StudentForm.xaml.cs">
       <DependentUpon>StudentForm.xaml</DependentUpon>
     </Compile>

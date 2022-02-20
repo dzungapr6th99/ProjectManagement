@@ -19,10 +19,10 @@ namespace ProjectManagement.View
     /// </summary>
     public partial class TeacherForm : Window
     {
-        public TeacherForm()
+        public TeacherForm(Teacher teacher)
         {
             InitializeComponent();
-            Teacher teacher = new Teacher();
+            //Teacher teacher = new Teacher();
             TeacherName.Content = teacher.Name;
             void ShowListProject(int type)
             {
